@@ -1,0 +1,174 @@
+﻿@model IEnumerable<StudentManagement.Models.Course>
+
+@{
+    ViewData["Title"] = "Course Management";
+}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+    <div class="page-header mb-4">
+
+        <div>
+            <h2>
+                <i class="bi bi-book-half"></i>
+                Course Management
+            </h2>
+
+            <p class="text-muted">
+                Manage all available courses.
+            </p>
+        </div>
+
+        <div>
+
+            <a asp-action="Create" class="btn btn-primary">
+
+                <i class="bi bi-plus-circle"></i>
+
+                Add Course
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Search -->
+
+    <form asp-action="Index" method="get">
+
+        <div class="search-box mb-4">
+
+            <div class="input-group">
+
+                <span class="input-group-text">
+
+                    <i class="bi bi-search"></i>
+
+                </span>
+
+                <input type="text"
+                       name="search"
+                       class="form-control"
+                       placeholder="Search course..." />
+
+                <button class="btn btn-dark">
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    <!-- Table -->
+
+    <div class="table-card">
+
+        <table class="table table-hover align-middle">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Course Name</th>
+
+                    <th>Department</th>
+
+                    <th>Duration</th>
+
+                    <th>Fees</th>
+
+                    <th>Status</th>
+
+                    <th class="text-center">Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.Id</td>
+
+                        <td>
+
+                            <strong>@item.CourseName</strong>
+
+                        </td>
+
+                        <td>@item.Department</td>
+
+                        <td>@item.Duration Years</td>
+
+                        <td>₹@item.Fees</td>
+
+                        <td>
+
+                            @if (item.IsActive)
+                            {
+                                <span class="badge bg-success">
+
+                                    Active
+
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">
+
+                                    Inactive
+
+                                </span>
+                            }
+
+                        </td>
+
+                        <td class="text-center">
+
+                            <a asp-action="Details"
+                               asp-route-id="@item.Id"
+                               class="btn btn-info btn-sm text-white">
+
+                                <i class="bi bi-eye-fill"></i>
+
+                            </a>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@item.Id"
+                               class="btn btn-warning btn-sm text-white">
+
+                                <i class="bi bi-pencil-square"></i>
+
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.Id"
+                               class="btn btn-danger btn-sm">
+
+                                <i class="bi bi-trash-fill"></i>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

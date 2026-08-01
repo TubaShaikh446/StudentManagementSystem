@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+
+<div class="container-fluid">
+
+    <div class="mb-4">
+
+        <h2 class="fw-bold">
+            Student Dashboard
+        </h2>
+
+        <p class="text-muted">
+            Overview of student management system
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <!-- Total Students -->
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+
+                <div class="icon-box blue">
+
+                    <i class="bi bi-people-fill"></i>
+
+                </div>
+
+
+                <h6>Total Students</h6>
+
+                <h2>
+                    @ViewBag.TotalStudents
+                </h2>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Male -->
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+
+                <div class="icon-box green">
+
+                    <i class="bi bi-person-fill"></i>
+
+                </div>
+
+
+                <h6>Male Students</h6>
+
+                <h2>
+                    @ViewBag.MaleStudents
+                </h2>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Female -->
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+
+                <div class="icon-box pink">
+
+                    <i class="bi bi-person-heart"></i>
+
+                </div>
+
+
+                <h6>Female Students</h6>
+
+                <h2>
+                    @ViewBag.FemaleStudents
+                </h2>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Courses -->
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+
+                <div class="icon-box orange">
+
+                    <i class="bi bi-book-fill"></i>
+
+                </div>
+
+
+                <h6>Total Courses</h6>
+
+                <h2>
+                    @ViewBag.TotalCourses
+                </h2>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
