@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using StudentManagement.Data;
 using StudentManagement.Models;
 
@@ -75,6 +75,60 @@ namespace StudentManagement.Controllers
                 TempData["Success"] = "Course updated successfully.";
 
                 return RedirectToAction(nameof(Index));
+            }
+
+            return View(course);
+        }
+        // GET: Course/Delete/5
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var course = _context.Courses.Find(id);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return View(course);
+        }
+
+        // POST: Course/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var course = _context.Courses.Find(id);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            _context.Courses.Remove(course);
+            _context.SaveChanges();
+
+            TempData["Success"] = "Course deleted successfully.";
+
+            return RedirectToAction(nameof(Index));
+        }
+        // GET: Course/Details/3
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var course = _context.Courses.Find(id);
+
+            if (course == null)
+            {
+                return NotFound();
             }
 
             return View(course);
